@@ -177,4 +177,4 @@ https://github.com/HendricoS/chatx-app.git
 
 ## Vercel Link
 
-https://chatx-kzqfvefmi-hendricos-projects.vercel.app
+https://chatx-io9gdr0b5-hendricos-projects.vercel.app
