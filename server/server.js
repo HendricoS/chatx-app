@@ -11,7 +11,16 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware setup
-app.use(cors()); // Enable Cross-Origin Resource Sharing
+app.use(
+  cors({
+    origin: [
+      "https://chatx-ram0gb9x6-hendricos-projects.vercel.app", // Vercel app domain
+      "http://localhost:3000", // Local host domain
+    ],
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true,
+  })
+); // Enable Cross-Origin Resource Sharing
 app.use(bodyParser.json()); // Parse incoming JSON requests
 app.use(helmet()); // Use Helmet to enhance application security
 

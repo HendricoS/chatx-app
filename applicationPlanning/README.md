@@ -21,7 +21,13 @@
 - Admin Login Page: Admin user login page.
 - Admin Panel: Interface for admin users to delete other user accounts.
 
-### Backend Architecture
+## Backend Architecture
+
+- The backend is powered by Express.js, serving as a custom server handling API requests and responses.
+- MongoDB is used as the database to store user accounts.
+- Helmet middleware enhances security against common web vulnerabilities, while CORS middleware enables secure cross-origin API requests.
+
+### Backend Components
 
 - Express.js Server: Custom server handling API requests and responses.
 - MongoDB Database: Stores user accounts, accessible through backend routes.
@@ -110,3 +116,63 @@
 - The app will mainly be used for example a company. Whereby all team members can login to the app and send, receive and delete messages
 
 ---
+
+# \*\*\* How to Use the App \*\*\*
+
+## Explanation of How to Use the App
+
+- The app facilitates communication between users.
+- After registering and logging in, users can access the messaging app to send, receive, and delete messages.
+- Admin users can additionally log in to the admin panel to manage user accounts.
+
+## Instructions for Local Installation:
+
+### Clone the GitHub repository:
+
+- git clone https://github.com/HendricoS/ChatX.git
+
+### Navigate to the frontend directory:
+
+- cd ChatX/client
+
+### Install dependencies:
+
+- npm install
+
+### Start the frontend development server:
+
+- npm start
+
+### Open a new terminal and navigate to the backend directory:
+
+- cd ../server
+
+### Install backend dependencies:
+
+- npm install
+
+### Start the backend server:
+
+- npm start or nodemon
+
+### Modify MongoDB URIs or API keys as needed
+
+# \*\*\* Security Measures \*\*\*
+
+- The app employs Helmet middleware and CORS to enhance security.
+- User passwords are securely stored using industry best practices.
+
+### Third-Party APIs:
+
+- MongoDB is used as the database for the backend.
+
+### Deployment Information:
+
+- The frontend is deployed on Vercel, and the backend is hosted on GitHub.
+- Frontend and backend are deployed separately for ease of maintenance and scalability.
+
+## GitHub Link
+
+## Vercel Link
+
+https://chatx-3q4o0tzwo-hendricos-projects.vercel.app
