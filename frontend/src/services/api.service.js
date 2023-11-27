@@ -6,9 +6,10 @@ import axios from "axios";
 // const baseURL = process.env.REACT_APP_API_BASE_URL || "http://localhost:5000";
 
 const baseURL =
-  process.env.NODE_ENV === "production"
-    ? "https://raw.githubusercontent.com/HendricoS/chatx-app/main" // Linking GitHub as the backend
-    : "http://localhost:5000"; // Default for developments
+  process.env.NODE_ENV ===
+  // "production"
+  "https://raw.githubusercontent.com/HendricoS/chatx-app/main"; // Linking GitHub as the backend
+// : "http://localhost:5000"; // Default for developments
 
 // Create an instance of axios with the base URL for the backend
 const api = axios.create({
