@@ -2,19 +2,27 @@
 
 import axios from "axios";
 
-// Determine the base URL based on the environment
-const baseURL = process.env.REACT_APP_API_BASE_URL || "http://localhost:5000";
-
-// const baseURL =
-//   process.env.NODE_ENV ===
-//   // "production"
-//   "https://github.com/HendricoS/chatx-app.git"; // Linking GitHub as the backend
-// : "http://localhost:5000"; // Default for developments
-
 // Create an instance of axios with the base URL for the backend
 const api = axios.create({
-  baseURL,
+  baseURL:
+    process.env.REACT_APP_API_BASE_URL ||
+    "https://chatx-backend-8tb3.onrender.com" ||
+    "http://localhost:5000",
 });
+
+// Add a response interceptor to catch errors
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    // If there's an error and no response, fallback to localhost
+    if (!error.response) {
+      api.defaults.baseURL = "http://localhost:5000";
+      return api(error.config);
+    }
+
+    return Promise.reject(error);
+  }
+);
 
 // Function to register a new user
 export const registerUser = async (userData) => {

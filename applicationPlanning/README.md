@@ -37,7 +37,7 @@
 ### Deployment
 
 - The application will be deployed to GitHub for version control and collaboration.
-- Vercel will be used for hosting the frontend, ensuring ease of deployment and automatic CI/CD.
+- Render will be used for hosting the frontend and backend, ensuring ease of deployment and automatic CI/CD.
 
 ---
 
@@ -168,13 +168,17 @@
 
 ### Deployment Information:
 
-- The frontend is deployed on Vercel, and the backend is hosted on ?????.
-- Frontend and backend are deployed separately for ease of maintenance and scalability.
+- The frontend and backend is deployed on Render.
+- Frontend and backend are deployed together for ease of maintenance and scalability.
 
 ## GitHub Link
 
 https://github.com/HendricoS/chatx-app.git
 
-## Vercel Link
+## Render Frontend Link
 
-https://chatx-app.vercel.app/
+https://chatx-frontend.onrender.com/
+
+## Render Backend Link
+
+https://chatx-backend-8tb3.onrender.com
