@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-// Create an instance of axios with the base URL for the backend
+import AppLogo from "./appLogo";
+
+// Axios with the base URL for the backend
 const api = axios.create({
   baseURL:
     process.env.REACT_APP_API_BASE_URL ||
@@ -97,11 +99,7 @@ const Login = () => {
         {/* Login page information */}
         <div className="image-wrapper">
           {/* App logo */}
-          <img
-            className="web-logo"
-            src="/images/chatx-logo.jpg"
-            alt="app-logo"
-          />
+          <AppLogo />
         </div>
         <div className="wrapper-web-log">
           <div className="wrapper-child-reg">

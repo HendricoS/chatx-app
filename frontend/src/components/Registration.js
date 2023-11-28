@@ -2,18 +2,15 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-// Create an instance of axios with the base URL for the backend
+import AppLogo from "./appLogo";
+
+// Axios with the base URL for the backend
 const api = axios.create({
   baseURL:
     process.env.REACT_APP_API_BASE_URL ||
     "https://chatx-backend-8tb3.onrender.com" ||
     "http://localhost:5000",
 });
-
-// Axios instance for API calls
-// const api = axios.create({
-//   baseURL: "https://chatx-backend-8tb3.onrender.com" || "http://localhost:5000", // Backend URL
-// });
 
 // Registration component
 const Registration = () => {
@@ -101,11 +98,7 @@ const Registration = () => {
         {/* Registration page information */}
         <div className="image-wrapper">
           {/* App logo */}
-          <img
-            className="web-logo"
-            src="/images/chatx-logo.jpg"
-            alt="app-logo"
-          />
+          <AppLogo />
         </div>
         <div className="wrapper-web-reg">
           <div className="wrapper-child-reg">
