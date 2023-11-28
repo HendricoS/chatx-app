@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Create an instance of axios with the base URL for the backend
 const api = axios.create({
-  baseURL: "http://localhost:5000", // Backend URL
+  baseURL: "https://github.com/HendricoS/chatx-app.git", // Backend URL
 });
 
 // Function to register a new user

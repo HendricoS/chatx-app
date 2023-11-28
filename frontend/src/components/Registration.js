@@ -4,7 +4,7 @@ import axios from "axios";
 
 // Axios instance for API calls
 const api = axios.create({
-  baseURL: "http://localhost:5000", // Backend URL
+  baseURL: "https://github.com/HendricoS/chatx-app.git", // Backend URL
 });
 
 // Registration component
@@ -118,7 +118,7 @@ const Registration = () => {
                   <div className="web-input-wrapper">
                     <input
                       className="web-input"
-                      type="text"
+                      type="email"
                       name="username"
                       onChange={handleChange}
                       required

@@ -4,7 +4,7 @@ import axios from "axios";
 
 // Create an instance of axios with the base URL for the backend
 const api = axios.create({
-  baseURL: "http://localhost:5000", // Backend URL
+  baseURL: "https://github.com/HendricoS/chatx-app.git", // Backend URL
 });
 
 const AdminLogin = () => {
@@ -87,7 +87,7 @@ const AdminLogin = () => {
                 <div className="web-input-wrapper">
                   <input
                     className="web-input-admin"
-                    type="text"
+                    type="email"
                     name="username"
                     onChange={handleChange}
                     required

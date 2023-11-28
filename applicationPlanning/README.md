@@ -168,7 +168,7 @@
 
 ### Deployment Information:
 
-- The frontend is deployed on Vercel, and the backend is hosted on GitHub.
+- The frontend is deployed on Vercel, and the backend is hosted on ?????.
 - Frontend and backend are deployed separately for ease of maintenance and scalability.
 
 ## GitHub Link
@@ -177,4 +177,4 @@ https://github.com/HendricoS/chatx-app.git
 
 ## Vercel Link
 
-https://chatx-io9gdr0b5-hendricos-projects.vercel.app
+https://chatx-app.vercel.app/

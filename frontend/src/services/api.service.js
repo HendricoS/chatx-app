@@ -3,12 +3,12 @@
 import axios from "axios";
 
 // Determine the base URL based on the environment
-// const baseURL = process.env.REACT_APP_API_BASE_URL || "http://localhost:5000";
+const baseURL = process.env.REACT_APP_API_BASE_URL || "http://localhost:5000";
 
-const baseURL =
-  process.env.NODE_ENV ===
-  // "production"
-  "https://raw.githubusercontent.com/HendricoS/chatx-app/main"; // Linking GitHub as the backend
+// const baseURL =
+//   process.env.NODE_ENV ===
+//   // "production"
+//   "https://github.com/HendricoS/chatx-app.git"; // Linking GitHub as the backend
 // : "http://localhost:5000"; // Default for developments
 
 // Create an instance of axios with the base URL for the backend
