@@ -17,10 +17,11 @@ const Registration = () => {
   // React Router's navigate function
   const navigate = useNavigate();
 
-  // State to manage form data (username and password)
+  // State to manage form data (username, password, and isAdmin)
   const [formData, setFormData] = useState({
     username: "",
     password: "",
+    isAdmin: false, // Add isAdmin field to the state
   });
 
   // State to manage error messages
@@ -29,6 +30,11 @@ const Registration = () => {
   // Function to handle form input changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // Function to handle checkbox changes
+  const handleCheckboxChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.checked });
   };
 
   // Function to handle form submission
@@ -137,6 +143,21 @@ const Registration = () => {
                       required
                       placeholder="password..."
                     />
+                  </div>
+                  {/* Checkbox for admin registration */}
+                  <div className="web-checkbox">
+                    <label className="check-box-label">
+                      <p className="web-p">
+                        Tick the box to register as an Admin:
+                      </p>
+
+                      <input
+                        type="checkbox"
+                        name="isAdmin"
+                        checked={formData.isAdmin}
+                        onChange={handleCheckboxChange}
+                      />
+                    </label>
                   </div>
                 </div>
                 <div className="row">

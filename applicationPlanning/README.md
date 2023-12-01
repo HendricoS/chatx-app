@@ -129,11 +129,11 @@
 
 ### Clone the GitHub repository:
 
-- git clone https://github.com/HendricoS/ChatX.git
+- git clone https://github.com/HendricoS/chatx-app.git
 
 ### Navigate to the frontend directory:
 
-- cd ChatX/client
+- cd ChatX/frontend
 
 ### Install dependencies:
 
@@ -145,7 +145,7 @@
 
 ### Open a new terminal and navigate to the backend directory:
 
-- cd ../server
+- cd ../backend
 
 ### Install backend dependencies:
 
@@ -153,7 +153,7 @@
 
 ### Start the backend server:
 
-- npm start or nodemon
+- npm start
 
 ### Modify MongoDB URIs or API keys as needed
 
@@ -177,8 +177,16 @@ https://github.com/HendricoS/chatx-app.git
 
 ## Render Frontend Link
 
-https://chatx-frontend.onrender.com/
+https://chatx-frontend.onrender.com
 
 ## Render Backend Link
 
 https://chatx-backend-8tb3.onrender.com
+
+## Accounts already registered - used in testing the application
+
+# username (admin@gmail.com) # password (admin1234)
+
+# username (userA@gmail.com) # password (123456)
+
+# username (userB@gmail.com) # password (123456)

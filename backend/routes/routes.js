@@ -19,11 +19,11 @@ const secretKey = "ch@tx@4212";
 // POST route for user registration
 router.post(
   "/register",
-  otherMiddlewares.checkUsernameDomain, // Middleware: Check username domain
-  otherMiddlewares.checkContentType, // Middleware: Check content type
+  otherMiddlewares.checkUsernameDomain,
+  otherMiddlewares.checkContentType,
   async (req, res) => {
     try {
-      const { username, password } = req.body;
+      const { username, password, isAdmin } = req.body;
 
       console.log("Received registration request:", username);
 
@@ -34,8 +34,12 @@ router.post(
         return res.status(409).json({ message: "User already exists" });
       }
 
-      // Create a new user with the default role "user"
-      const newUser = new User({ username, password, role: "user" });
+      // Create a new user with the default role "user" or "admin" based on the checkbox
+      const newUser = new User({
+        username,
+        password,
+        role: isAdmin ? "admin" : "user",
+      });
       await newUser.save();
 
       console.log("User registered successfully", username);
@@ -218,10 +222,10 @@ router.post("/admin-login", async (req, res) => {
     // Check if the hashed password matches the stored hashed password
     const passwordMatch = await bcryptjs.compare(password, user.password);
 
-    if (passwordMatch) {
+    if (passwordMatch && user.role === "admin") {
       // Generate a JWT token with admin role
       const jwtToken = jwt.sign(
-        { username, password, role: "admin" }, // Hardcode role as "admin"
+        { username, password, role: "admin" },
         secretKey,
         {
           expiresIn: "1h",
@@ -232,7 +236,9 @@ router.post("/admin-login", async (req, res) => {
     } else {
       return res
         .status(401)
-        .json({ message: "Invalid credentials - Password mismatch" });
+        .json({
+          message: "Invalid credentials - Password mismatch or not an admin",
+        });
     }
   } catch (error) {
     console.error(error);
