@@ -27,14 +27,12 @@ const Registration = () => {
   // State to manage error messages
   const [errorMessage, setErrorMessage] = useState("");
 
+  // State to manage the registration status
+  const [registering, setRegistering] = useState(false);
+
   // Function to handle form input changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  // Function to handle checkbox changes
-  const handleCheckboxChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.checked });
   };
 
   // Function to handle form submission
@@ -54,6 +52,8 @@ const Registration = () => {
     }
 
     try {
+      setRegistering(true); // Set registering status to true
+
       // Send registration request to the backend
       const response = await api.post("/register", formData);
       console.log(response.data.message); // Display registration success message
@@ -75,6 +75,8 @@ const Registration = () => {
         // Handle other registration errors, show an error message, etc.
         setErrorMessage("Error during registration. Username already exists.");
       }
+    } finally {
+      setRegistering(false); // Reset registering status
     }
   };
 
@@ -85,20 +87,23 @@ const Registration = () => {
       <div className="container">
         <div className="wrapper-web-nav">
           <div className="row">
-            <div className="col-lg-3"></div>
-            <div className="col-lg-3">
+            <div className="col-lg-4">
+              <Link to="/">
+                <span className="top-link">About</span>
+              </Link>
+            </div>
+            <div className="col-lg-4">
               {/* Link to the user login page */}
               <Link to="/login">
                 <span className="top-link">User Login</span>
               </Link>
             </div>
-            <div className="col-lg-3">
+            <div className="col-lg-4">
               {/* Link to the admin login page */}
               <Link to="/admin-login">
                 <span className="top-link">Admin Login</span>
               </Link>
             </div>
-            <div className="col-lg-3"></div>
           </div>
         </div>
         {/* Registration page information */}
@@ -144,27 +149,16 @@ const Registration = () => {
                       placeholder="password..."
                     />
                   </div>
-                  {/* Checkbox for admin registration */}
-                  <div className="web-checkbox">
-                    <label className="check-box-label">
-                      <p className="web-p">
-                        Tick the box to register as an Admin:
-                      </p>
-
-                      <input
-                        type="checkbox"
-                        name="isAdmin"
-                        checked={formData.isAdmin}
-                        onChange={handleCheckboxChange}
-                      />
-                    </label>
-                  </div>
                 </div>
                 <div className="row">
                   <div className="col-lg">
-                    {/* Submit button for registration */}
-                    <button className="web-btn" type="submit">
-                      Register
+                    {/* Submit button for registration with a conditional message */}
+                    <button
+                      className="web-btn"
+                      type="submit"
+                      disabled={registering}
+                    >
+                      {registering ? "Registering..." : "Register"}
                     </button>
                   </div>
                 </div>

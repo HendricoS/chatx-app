@@ -210,20 +210,9 @@ router.post("/admin-login", async (req, res) => {
   try {
     const { username, password } = req.body;
 
-    // Check if the user exists
-    const user = await User.findOne({ username });
-
-    if (!user) {
-      return res
-        .status(401)
-        .json({ message: "Invalid credentials - User not found" });
-    }
-
-    // Check if the hashed password matches the stored hashed password
-    const passwordMatch = await bcryptjs.compare(password, user.password);
-
-    if (passwordMatch && user.role === "admin") {
-      // Generate a JWT token with admin role
+    // Check if the user is attempting to log in as admin with hardcoded credentials
+    if (username === "admin@gmail.com" && password === "admin1234") {
+      // Allow login as admin with hardcoded credentials
       const jwtToken = jwt.sign(
         { username, password, role: "admin" },
         secretKey,
@@ -234,11 +223,10 @@ router.post("/admin-login", async (req, res) => {
 
       return res.json({ token: jwtToken, role: "admin" });
     } else {
-      return res
-        .status(401)
-        .json({
-          message: "Invalid credentials - Password mismatch or not an admin",
-        });
+      // Reject login attempts for non-admin users
+      return res.status(401).json({
+        message: "Invalid credentials - Password mismatch or not an admin",
+      });
     }
   } catch (error) {
     console.error(error);
@@ -247,7 +235,6 @@ router.post("/admin-login", async (req, res) => {
       .json({ message: "Internal Server Error", error: error.message });
   }
 });
-
 // Admin Routes
 // GET route for fetching all users (admin access only)
 router.get("/admin/users", checkJWTToken, async (req, res) => {
